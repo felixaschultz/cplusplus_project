@@ -89,5 +89,15 @@ unsigned char StudentRecords::get_course_credits(int cid){
 	return courses[j].get_credits();
 }
 
-float StudentRecords::get_GPA(int sid){}
+float StudentRecords::get_GPA(int sid){
+	float points = 0.0f, credits = 0.0f;
+	for (Grade& grd : grades)
+		if (grd.get_student_id() == sid){
+			// Get numeric grade
+			// calculate total credits and points
+			credits += get_course_credits(grd.get_course_id());
+			points += get_num_grade(grd.get_grade()) * courses[j].get_credits();
+		}
+	return (points / credits);
+}
 
